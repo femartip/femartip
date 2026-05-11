@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -526,6 +527,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header class="hero" aria-label="Introduction">
@@ -534,10 +536,6 @@
         <p class="role">AI researcher</p>
         <p class="tagline">Evaluation, predictability, and explainability of AI systems</p>
         <p class="meta">PhD student at VRAIN</p>
-        <a class="text-link" href="#papers" aria-label="View papers section">
-          View papers
-          <span aria-hidden="true">→</span>
-        </a>
       </div>
     </header>
 
@@ -546,26 +544,25 @@
         <span id="about-title" class="section-label">About</span>
         <div class="about-grid">
           <p class="about-text">
-            PhD student at VRAIN, working on evaluation, predictability, and explainability of AI systems, with a focus on autonomous driving perception.
+            PhD student at VRAIN, working on evaluation, predictability, and explainability of AI systems, with a focus
+            on autonomous driving perception.
           </p>
 
-          <div class="portrait" aria-label="Minimal portrait placeholder">
-            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="60" cy="42" r="23" fill="currentColor" opacity="0.56"/>
-              <path d="M24 103c5.6-24.4 22-36 36-36s30.4 11.6 36 36" fill="currentColor" opacity="0.56"/>
-              <circle cx="50" cy="43" r="5" fill="#050505" opacity="0.8"/>
-              <circle cx="70" cy="43" r="5" fill="#050505" opacity="0.8"/>
-              <path d="M45 41h10M65 41h10M55 42h10" stroke="#050505" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+          <div class="portrait" aria-label="main image">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="./image.jpg" aria-hidden="true">
+              <circle cx="60" cy="42" r="23" fill="currentColor" opacity="0.56" />
+              <path d="M24 103c5.6-24.4 22-36 36-36s30.4 11.6 36 36" fill="currentColor" opacity="0.56" />
+              <circle cx="50" cy="43" r="5" fill="#050505" opacity="0.8" />
+              <circle cx="70" cy="43" r="5" fill="#050505" opacity="0.8" />
+              <path d="M45 41h10M65 41h10M55 42h10" stroke="#050505" stroke-width="3" stroke-linecap="round"
+                opacity="0.8" />
             </svg>
           </div>
         </div>
       </section>
 
       <section id="papers" class="section" aria-labelledby="papers-title">
-        <span id="papers-title" class="section-label">Papers</span>
-        <p class="papers-intro">
-          Publications and ongoing work around AI evaluation, explainability, predictability, and autonomous systems.
-        </p>
+        <span id="papers-title" class="section-label">Publications</span>
 
         <div class="chips" aria-label="Filter papers by topic">
           <button class="chip active" type="button" data-filter="all">All</button>
@@ -574,11 +571,11 @@
           <button class="chip" type="button" data-filter="predictability">Predictability</button>
           <button class="chip" type="button" data-filter="explainability">Explainability</button>
           <button class="chip" type="button" data-filter="time-series">Time Series</button>
-          <button class="chip" type="button" data-filter="object-detection">Object Detection</button>
         </div>
 
         <div class="paper-list" aria-live="polite">
-          <article class="paper" data-tags="ai-evaluation autonomous-driving object-detection predictability explainability">
+          <article class="paper"
+            data-tags="ai-evaluation autonomous-driving object-detection predictability explainability">
             <span class="paper-year">2026</span>
             <div>
               <h2 class="paper-title">Frame-Level Trust for Object Detection in Driving Scenes</h2>
@@ -589,7 +586,8 @@
                 <span class="paper-tag">Object Detection</span>
                 <span class="paper-tag">Predictability</span>
               </div>
-              <a class="paper-link" href="#" aria-label="View Frame-Level Trust for Object Detection in Driving Scenes publication">
+              <a class="paper-link" href="#"
+                aria-label="View Frame-Level Trust for Object Detection in Driving Scenes publication">
                 Accepted paper <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -598,14 +596,16 @@
           <article class="paper" data-tags="explainability time-series ai-evaluation">
             <span class="paper-year">2026</span>
             <div>
-              <h2 class="paper-title">Evaluating Simplification Algorithms for Interpretability of Time Series Classification</h2>
+              <h2 class="paper-title">Evaluating Simplification Algorithms for Interpretability of Time Series
+                Classification</h2>
               <p class="paper-meta">World Conference on XAI 2026</p>
               <div class="paper-tags" aria-label="Paper tags">
                 <span class="paper-tag">Explainability</span>
                 <span class="paper-tag">Time Series</span>
                 <span class="paper-tag">AI Evaluation</span>
               </div>
-              <a class="paper-link" href="https://arxiv.org/abs/2505.08846" aria-label="View Evaluating Simplification Algorithms for Interpretability of Time Series Classification paper">
+              <a class="paper-link" href="https://arxiv.org/abs/2505.08846"
+                aria-label="View Evaluating Simplification Algorithms for Interpretability of Time Series Classification paper">
                 View paper <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -621,7 +621,8 @@
                 <span class="paper-tag">Human-centered AI</span>
                 <span class="paper-tag">Explainability</span>
               </div>
-              <a class="paper-link" href="https://arxiv.org/abs/2602.18911" aria-label="View From Human-Level AI Tales to AI Leveling Human Scales preprint">
+              <a class="paper-link" href="https://arxiv.org/abs/2602.18911"
+                aria-label="View From Human-Level AI Tales to AI Leveling Human Scales preprint">
                 View preprint <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -637,7 +638,8 @@
                 <span class="paper-tag">Autonomous Driving</span>
                 <span class="paper-tag">Predictability</span>
               </div>
-              <a class="paper-link" href="https://ojs.aaai.org/index.php/AIES/article/view/36789" aria-label="View Predictability in Autonomous Driving Systems publication">
+              <a class="paper-link" href="https://ojs.aaai.org/index.php/AIES/article/view/36789"
+                aria-label="View Predictability in Autonomous Driving Systems publication">
                 View publication <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -650,9 +652,9 @@
               <p class="paper-meta">Results in Engineering, 2025</p>
               <div class="paper-tags" aria-label="Paper tags">
                 <span class="paper-tag">Object Detection</span>
-                <span class="paper-tag">Deep Learning</span>
               </div>
-              <a class="paper-link" href="https://www.sciencedirect.com/science/article/pii/S2590123025015245" aria-label="View Detection of Microfibres in Wastewater Sludge with Deep Learning publication">
+              <a class="paper-link" href="https://www.sciencedirect.com/science/article/pii/S2590123025015245"
+                aria-label="View Detection of Microfibres in Wastewater Sludge with Deep Learning publication">
                 View publication <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -661,13 +663,14 @@
           <article class="paper" data-tags="object-detection ai-evaluation">
             <span class="paper-year">2025</span>
             <div>
-              <h2 class="paper-title">MicroFiberDetect: An Application for the Detection of Microfibres in Wastewater Sludge Based on CNNs</h2>
+              <h2 class="paper-title">MicroFiberDetect: An Application for the Detection of Microfibres in Wastewater
+                Sludge Based on CNNs</h2>
               <p class="paper-meta">AAAI 2025</p>
               <div class="paper-tags" aria-label="Paper tags">
                 <span class="paper-tag">Object Detection</span>
-                <span class="paper-tag">CNNs</span>
               </div>
-              <a class="paper-link" href="https://ojs.aaai.org/index.php/AAAI/article/view/35366" aria-label="View MicroFiberDetect publication">
+              <a class="paper-link" href="https://ojs.aaai.org/index.php/AAAI/article/view/35366"
+                aria-label="View MicroFiberDetect publication">
                 View publication <span aria-hidden="true">→</span>
               </a>
             </div>
@@ -747,7 +750,8 @@
               <span class="year">2025</span>
               <div class="timeline-entries">
                 <div class="timeline-entry secondary">
-                  <p class="timeline-title">XAI for Machine Teaching Workshop · Mallorca</p>
+                  <p class="timeline-title"><a class="text-link" href="https://xai.w.uib.no/mt4xai-workshop/">XAI for
+                      Machine Teaching Workshop · Mallorca</a></p>
                   <p class="timeline-type">Workshop attended</p>
                 </div>
               </div>
@@ -790,7 +794,8 @@
           <article class="experience-item">
             <span class="experience-label">Teaching</span>
             <div>
-              <h2 class="experience-title">International Evaluation Program</h2>
+              <h2 class="experience-title"><a href="https://ai-evaluation.org/programme">International Programme on AI
+                  Evaluation</a></h2>
               <p class="experience-meta">Teaching assistant.</p>
             </div>
           </article>
@@ -801,26 +806,43 @@
         <span id="contact-title" class="section-label">Contact</span>
         <div class="contact-lines">
           <a class="contact-line" href="mailto:fmarper@upv.edu.es">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="1.6"/><path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="1.6"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="1.6" />
+              <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="1.6" />
+            </svg>
             fmarper@upv.edu.es
           </a>
           <p class="contact-line">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z" stroke="currentColor" stroke-width="1.6" />
+              <circle cx="12" cy="10" r="2" stroke="currentColor" stroke-width="1.6" />
+            </svg>
             Valencia, Spain
           </p>
         </div>
 
         <nav class="socials" aria-label="Social links">
-          <a href="#">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.9c.46.08.63-.2.63-.44v-1.7c-2.56.56-3.1-1.1-3.1-1.1-.42-1.06-1.02-1.34-1.02-1.34-.84-.58.06-.57.06-.57.92.06 1.4.95 1.4.95.82 1.4 2.15 1 2.67.76.08-.6.32-1 .58-1.23-2.04-.23-4.18-1.02-4.18-4.54 0-1 .36-1.82.95-2.46-.1-.24-.42-1.18.09-2.43 0 0 .78-.25 2.54.94a8.8 8.8 0 0 1 4.62 0c1.76-1.2 2.54-.94 2.54-.94.5 1.25.19 2.2.1 2.43.59.64.94 1.46.94 2.46 0 3.53-2.15 4.3-4.2 4.53.33.29.63.85.63 1.72v2.54c0 .25.16.53.64.44A9.2 9.2 0 0 0 12 2.8Z" fill="currentColor"/></svg>
+          <a href="https://github.com/femartip">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M12 2.8a9.2 9.2 0 0 0-2.9 17.9c.46.08.63-.2.63-.44v-1.7c-2.56.56-3.1-1.1-3.1-1.1-.42-1.06-1.02-1.34-1.02-1.34-.84-.58.06-.57.06-.57.92.06 1.4.95 1.4.95.82 1.4 2.15 1 2.67.76.08-.6.32-1 .58-1.23-2.04-.23-4.18-1.02-4.18-4.54 0-1 .36-1.82.95-2.46-.1-.24-.42-1.18.09-2.43 0 0 .78-.25 2.54.94a8.8 8.8 0 0 1 4.62 0c1.76-1.2 2.54-.94 2.54-.94.5 1.25.19 2.2.1 2.43.59.64.94 1.46.94 2.46 0 3.53-2.15 4.3-4.2 4.53.33.29.63.85.63 1.72v2.54c0 .25.16.53.64.44A9.2 9.2 0 0 0 12 2.8Z"
+                fill="currentColor" />
+            </svg>
             GitHub
           </a>
-          <a href="#">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 9.5V18M6.5 6.4v.1M10.5 18v-4.6c0-2.1 1.25-3.7 3.35-3.7 1.95 0 3.15 1.28 3.15 3.7V18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3.8 3.8h16.4v16.4H3.8V3.8Z" stroke="currentColor" stroke-width="1.5"/></svg>
+          <a href="https://www.linkedin.com/in/felix-marti-perez-a494b3217/">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.5 9.5V18M6.5 6.4v.1M10.5 18v-4.6c0-2.1 1.25-3.7 3.35-3.7 1.95 0 3.15 1.28 3.15 3.7V18"
+                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              <path d="M3.8 3.8h16.4v16.4H3.8V3.8Z" stroke="currentColor" stroke-width="1.5" />
+            </svg>
             LinkedIn
           </a>
           <a href="mailto:fmarper@upv.edu.es">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="1.6"/><path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="1.6"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="1.6" />
+              <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="1.6" />
+            </svg>
             Email
           </a>
         </nav>
@@ -879,4 +901,5 @@
     updatePapers();
   </script>
 </body>
+
 </html>
