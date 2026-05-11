@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Felix Marti-Perez</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --surface: #111214;
+      --surface-soft: #0b0c0e;
+      --border: rgba(255, 255, 255, 0.11);
+      --text: #f5f7fb;
+      --muted: #a5abb5;
+      --subtle: #707781;
+      --blue: #8ab4f8;
+      --blue-strong: #4285f4;
+      --radius: 28px;
+      --max-width: 880px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.035), transparent 28rem),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      letter-spacing: -0.02em;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(100% - 48px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 96px 0;
+    }
+
+    .hero-inner {
+      transform: translateY(-5vh);
+    }
+
+    .name {
+      font-size: clamp(3.8rem, 9vw, 7.2rem);
+      font-weight: 420;
+      letter-spacing: -0.075em;
+      line-height: 0.94;
+      margin-bottom: 24px;
+    }
+
+    .role {
+      color: var(--text);
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-size: 0.98rem;
+      font-weight: 350;
+      margin-bottom: 18px;
+    }
+
+    .meta {
+      color: var(--subtle);
+      font-size: 0.92rem;
+      margin-bottom: 30px;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--blue);
+      font-size: 0.96rem;
+      font-weight: 450;
+      padding: 10px 4px;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .text-link:hover {
+      opacity: 0.82;
+      transform: translateX(2px);
+    }
+
+    main {
+      padding-bottom: 120px;
+    }
+
+    .section {
+      margin-bottom: 108px;
+    }
+
+    .section-label {
+      display: block;
+      color: var(--text);
+      font-size: 0.92rem;
+      font-weight: 430;
+      margin-bottom: 24px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      gap: 96px;
+      align-items: center;
+    }
+
+    .about-text {
+      max-width: 520px;
+      color: #d8dce3;
+      font-size: clamp(1.08rem, 2vw, 1.34rem);
+      font-weight: 350;
+      letter-spacing: -0.035em;
+      line-height: 1.55;
+    }
+
+    .portrait {
+      width: 180px;
+      aspect-ratio: 1;
+      border-radius: 999px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 34%, #33383f 0%, #15171a 62%, #0a0b0d 100%);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 3rem;
+      font-weight: 300;
+    }
+
+    .portrait svg {
+      width: 72%;
+      height: 72%;
+      opacity: 0.82;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .chip {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.018);
+      color: #dce1e8;
+      border-radius: 999px;
+      padding: 9px 17px;
+      font-size: 0.88rem;
+      font-weight: 420;
+      cursor: pointer;
+      transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .chip:hover,
+    .chip.active {
+      color: var(--text);
+      border-color: rgba(138, 180, 248, 0.44);
+      background: rgba(138, 180, 248, 0.08);
+    }
+
+    .papers-intro {
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 26px;
+    }
+
+    .paper-list {
+      margin-top: 36px;
+      display: grid;
+      gap: 0;
+    }
+
+    .paper {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 28px;
+      padding: 22px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.075);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .paper:last-child {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .paper.hidden,
+    .paper.collapsed {
+      display: none;
+    }
+
+    .paper-year {
+      color: var(--blue);
+      font-size: 0.98rem;
+      font-weight: 430;
+      letter-spacing: -0.04em;
+    }
+
+    .paper-title {
+      color: var(--text);
+      font-size: clamp(1.05rem, 1.8vw, 1.32rem);
+      line-height: 1.22;
+      font-weight: 430;
+      letter-spacing: -0.04em;
+      max-width: 720px;
+      margin-bottom: 7px;
+    }
+
+    .paper-meta {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 11px;
+    }
+
+    .paper-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 10px;
+    }
+
+    .paper-tag {
+      color: #c4cad3;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .paper-link {
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.86rem;
+      font-weight: 430;
+    }
+
+    .paper-link:hover {
+      opacity: 0.82;
+    }
+
+    .display-toggle {
+      margin-top: 24px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font: inherit;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .display-toggle:hover {
+      color: var(--text);
+      border-color: rgba(138, 180, 248, 0.44);
+      background: rgba(138, 180, 248, 0.06);
+    }
+
+    .timeline-shell {
+      position: relative;
+      max-width: 100%;
+    }
+
+    .timeline-shell::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 100%;
+      pointer-events: none;
+      background: linear-gradient(to right, rgba(5, 5, 5, 0), rgba(5, 5, 5, 0.92));
+      backdrop-filter: blur(2px);
+    }
+
+    .timeline {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x proximity;
+      padding: 4px 96px 22px 0;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(138, 180, 248, 0.28) transparent;
+    }
+
+    .timeline::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .timeline::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .timeline::-webkit-scrollbar-thumb {
+      background: rgba(138, 180, 248, 0.26);
+      border-radius: 999px;
+    }
+
+    .timeline-year-group {
+      position: relative;
+      flex: 0 0 min(72vw, 260px);
+      scroll-snap-align: start;
+      padding-top: 34px;
+    }
+
+    .timeline-year-group::before {
+      content: "";
+      position: absolute;
+      top: 9px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, var(--blue), rgba(138, 180, 248, 0.12));
+    }
+
+    .timeline-year-group::after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 0;
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 0 0 5px rgba(138, 180, 248, 0.08);
+    }
+
+    .year {
+      display: block;
+      color: var(--blue);
+      font-size: 1.02rem;
+      font-weight: 430;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .timeline-entries {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-entry {
+      display: grid;
+      gap: 4px;
+    }
+
+    .timeline-entry.secondary {
+      padding-left: 18px;
+      border-left: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .timeline-title {
+      color: #d9dde4;
+      font-size: 0.94rem;
+      font-weight: 360;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+    }
+
+    .timeline-entry.primary .timeline-title {
+      color: var(--text);
+      font-size: 1.08rem;
+      font-weight: 430;
+      letter-spacing: -0.035em;
+    }
+
+    .timeline-type {
+      color: var(--subtle);
+      font-size: 0.78rem;
+      font-weight: 420;
+    }
+
+    .timeline-entry.primary .timeline-type {
+      color: var(--blue);
+    }
+
+    .experience-list {
+      display: grid;
+      gap: 0;
+      max-width: 760px;
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 128px minmax(0, 1fr);
+      gap: 32px;
+      padding: 24px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.075);
+    }
+
+    .experience-item:last-child {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+    }
+
+    .experience-label {
+      color: var(--blue);
+      font-size: 0.88rem;
+      font-weight: 430;
+    }
+
+    .experience-title {
+      color: var(--text);
+      font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+      line-height: 1.25;
+      font-weight: 430;
+      letter-spacing: -0.035em;
+      margin-bottom: 7px;
+    }
+
+    .experience-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .contact {
+      padding: 38px 0 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .contact-lines {
+      display: grid;
+      gap: 12px;
+      color: #d8dce3;
+      margin-bottom: 28px;
+    }
+
+    .contact-line,
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: #d8dce3;
+      font-size: 0.96rem;
+    }
+
+    .icon {
+      width: 18px;
+      height: 18px;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+
+    .socials a {
+      color: var(--muted);
+      transition: color 180ms ease;
+    }
+
+    .socials a:hover {
+      color: var(--blue);
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(100% - 32px, var(--max-width));
+      }
+
+      .name {
+        font-size: clamp(3.1rem, 15vw, 5rem);
+      }
+
+      .about-grid,
+      .paper,
+      .experience-item {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        gap: 36px;
+      }
+
+      .portrait {
+        width: 132px;
+      }
+
+      .timeline-year-group {
+        flex-basis: min(84vw, 300px);
+      }
+
+      .timeline-shell::after {
+        width: 72px;
+      }
+
+      .paper {
+        gap: 12px;
+        padding: 30px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero" aria-label="Introduction">
+      <div class="hero-inner">
+        <h1 class="name">Felix Marti-Perez</h1>
+        <p class="role">AI researcher</p>
+        <p class="tagline">Evaluation, predictability, and explainability of AI systems</p>
+        <p class="meta">PhD student at VRAIN</p>
+        <a class="text-link" href="#papers" aria-label="View papers section">
+          View papers
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section about" aria-labelledby="about-title">
+        <span id="about-title" class="section-label">About</span>
+        <div class="about-grid">
+          <p class="about-text">
+            PhD student at VRAIN, working on evaluation, predictability, and explainability of AI systems, with a focus on autonomous driving perception.
+          </p>
+
+          <div class="portrait" aria-label="Minimal portrait placeholder">
+            <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="60" cy="42" r="23" fill="currentColor" opacity="0.56"/>
+              <path d="M24 103c5.6-24.4 22-36 36-36s30.4 11.6 36 36" fill="currentColor" opacity="0.56"/>
+              <circle cx="50" cy="43" r="5" fill="#050505" opacity="0.8"/>
+              <circle cx="70" cy="43" r="5" fill="#050505" opacity="0.8"/>
+              <path d="M45 41h10M65 41h10M55 42h10" stroke="#050505" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section id="papers" class="section" aria-labelledby="papers-title">
+        <span id="papers-title" class="section-label">Papers</span>
+        <p class="papers-intro">
+          Publications and ongoing work around AI evaluation, explainability, predictability, and autonomous systems.
+        </p>
+
+        <div class="chips" aria-label="Filter papers by topic">
+          <button class="chip active" type="button" data-filter="all">All</button>
+          <button class="chip" type="button" data-filter="ai-evaluation">AI Evaluation</button>
+          <button class="chip" type="button" data-filter="autonomous-driving">Autonomous Driving</button>
+          <button class="chip" type="button" data-filter="predictability">Predictability</button>
+          <button class="chip" type="button" data-filter="explainability">Explainability</button>
+          <button class="chip" type="button" data-filter="time-series">Time Series</button>
+          <button class="chip" type="button" data-filter="object-detection">Object Detection</button>
+        </div>
+
+        <div class="paper-list" aria-live="polite">
+          <article class="paper" data-tags="ai-evaluation autonomous-driving object-detection predictability explainability">
+            <span class="paper-year">2026</span>
+            <div>
+              <h2 class="paper-title">Frame-Level Trust for Object Detection in Driving Scenes</h2>
+              <p class="paper-meta">ITSC 2026</p>
+              <div class="paper-tags" aria-label="Paper tags">
+                <span class="paper-tag">AI Evaluation</span>
+                <span class="paper-tag">Autonomous Driving</span>
+                <span class="paper-tag">Object Detection</span>
+                <span class="paper-tag">Predictability</span>
+              </div>
+              <a class="paper-link" href="#" aria-label="View Frame-Level Trust for Object Detection in Driving Scenes publication">
+                Accepted paper <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="paper" data-tags="explainability time-series ai-evaluation">
+            <span class="paper-year">2026</span>
+            <div>
+              <h2 class="paper-title">Evaluating Simplification Algorithms for Interpretability of Time Series Classification</h2>
+              <p class="paper-meta">World Conference on XAI 2026</p>
+              <div class="paper-tags" aria-label="Paper tags">
+                <span class="paper-tag">Explainability</span>
+                <span class="paper-tag">Time Series</span>
+                <span class="paper-tag">AI Evaluation</span>
+              </div>
+              <a class="paper-link" href="https://arxiv.org/abs/2505.08846" aria-label="View Evaluating Simplification Algorithms for Interpretability of Time Series Classification paper">
+                View paper <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="paper" data-tags="ai-evaluation explainability">
+            <span class="paper-year">2026</span>
+            <div>
+              <h2 class="paper-title">From Human-Level AI Tales to AI Leveling Human Scales</h2>
+              <p class="paper-meta">arXiv preprint</p>
+              <div class="paper-tags" aria-label="Paper tags">
+                <span class="paper-tag">AI Evaluation</span>
+                <span class="paper-tag">Human-centered AI</span>
+                <span class="paper-tag">Explainability</span>
+              </div>
+              <a class="paper-link" href="https://arxiv.org/abs/2602.18911" aria-label="View From Human-Level AI Tales to AI Leveling Human Scales preprint">
+                View preprint <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="paper" data-tags="ai-evaluation autonomous-driving predictability">
+            <span class="paper-year">2025</span>
+            <div>
+              <h2 class="paper-title">Predictability in Autonomous Driving Systems</h2>
+              <p class="paper-meta">AIES 2025</p>
+              <div class="paper-tags" aria-label="Paper tags">
+                <span class="paper-tag">AI Evaluation</span>
+                <span class="paper-tag">Autonomous Driving</span>
+                <span class="paper-tag">Predictability</span>
+              </div>
+              <a class="paper-link" href="https://ojs.aaai.org/index.php/AIES/article/view/36789" aria-label="View Predictability in Autonomous Driving Systems publication">
+                View publication <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="paper" data-tags="object-detection ai-evaluation">
+            <span class="paper-year">2025</span>
+            <div>
+              <h2 class="paper-title">Detection of Microfibres in Wastewater Sludge with Deep Learning</h2>
+              <p class="paper-meta">Results in Engineering, 2025</p>
+              <div class="paper-tags" aria-label="Paper tags">
+                <span class="paper-tag">Object Detection</span>
+                <span class="paper-tag">Deep Learning</span>
+              </div>
+              <a class="paper-link" href="https://www.sciencedirect.com/science/article/pii/S2590123025015245" aria-label="View Detection of Microfibres in Wastewater Sludge with Deep Learning publication">
+                View publication <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="paper" data-tags="object-detection ai-evaluation">
+            <span class="paper-year">2025</span>
+            <div>
+              <h2 class="paper-title">MicroFiberDetect: An Application for the Detection of Microfibres in Wastewater Sludge Based on CNNs</h2>
+              <p class="paper-meta">AAAI 2025</p>
+              <div class="paper-tags" aria-label="Paper tags">
+                <span class="paper-tag">Object Detection</span>
+                <span class="paper-tag">CNNs</span>
+              </div>
+              <a class="paper-link" href="https://ojs.aaai.org/index.php/AAAI/article/view/35366" aria-label="View MicroFiberDetect publication">
+                View publication <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <button class="display-toggle" type="button" aria-expanded="false">
+          Show all papers
+        </button>
+      </section>
+
+      <section class="section" aria-labelledby="timeline-title">
+        <span id="timeline-title" class="section-label">Timeline</span>
+        <div class="timeline-shell" aria-label="Horizontal timeline, scroll to view older events">
+          <div class="timeline">
+            <div class="timeline-year-group">
+              <span class="year">Sep 2026</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry secondary">
+                  <p class="timeline-title">ITSC · Naples</p>
+                  <p class="timeline-type">Conference attended</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-year-group">
+              <span class="year">Jul 2026</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry secondary">
+                  <p class="timeline-title">World Conference on XAI · Fortaleza</p>
+                  <p class="timeline-type">Conference attended</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-year-group">
+              <span class="year">Dec 2025</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry secondary">
+                  <p class="timeline-title">Dagstuhl Seminar on Inductive Programming</p>
+                  <p class="timeline-type">Invited seminar</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-year-group">
+              <span class="year">Oct 2025</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry secondary">
+                  <p class="timeline-title">AIES · Madrid</p>
+                  <p class="timeline-type">Conference attended</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-year-group">
+              <span class="year">Sep 2025</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry primary">
+                  <p class="timeline-title">PhD Student · VRAIN</p>
+                  <p class="timeline-type">Position</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-year-group">
+              <span class="year">Mar 2025</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry secondary">
+                  <p class="timeline-title">AAAI · Philadelphia</p>
+                  <p class="timeline-type">Conference attended</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-year-group">
+              <span class="year">2025</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry secondary">
+                  <p class="timeline-title">XAI for Machine Teaching Workshop · Mallorca</p>
+                  <p class="timeline-type">Workshop attended</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-year-group">
+              <span class="year">Oct 2024</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry primary">
+                  <p class="timeline-title">Research Assistant · VRAIN</p>
+                  <p class="timeline-type">Position</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-year-group">
+              <span class="year">Nov 2023</span>
+              <div class="timeline-entries">
+                <div class="timeline-entry primary">
+                  <p class="timeline-title">Research Intern</p>
+                  <p class="timeline-type">Position</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="selected-work-title">
+        <span id="selected-work-title" class="section-label">Other Work</span>
+        <div class="experience-list">
+          <article class="experience-item">
+            <span class="experience-label">Freelance</span>
+            <div>
+              <h2 class="experience-title">OECD</h2>
+              <p class="experience-meta">Freelance work related to AI evaluation and international assessment.</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <span class="experience-label">Teaching</span>
+            <div>
+              <h2 class="experience-title">International Evaluation Program</h2>
+              <p class="experience-meta">Teaching assistant.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact" aria-labelledby="contact-title">
+        <span id="contact-title" class="section-label">Contact</span>
+        <div class="contact-lines">
+          <a class="contact-line" href="mailto:fmarper@upv.edu.es">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="1.6"/><path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="1.6"/></svg>
+            fmarper@upv.edu.es
+          </a>
+          <p class="contact-line">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s6-5.4 6-11a6 6 0 1 0-12 0c0 5.6 6 11 6 11Z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2" stroke="currentColor" stroke-width="1.6"/></svg>
+            Valencia, Spain
+          </p>
+        </div>
+
+        <nav class="socials" aria-label="Social links">
+          <a href="#">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.8a9.2 9.2 0 0 0-2.9 17.9c.46.08.63-.2.63-.44v-1.7c-2.56.56-3.1-1.1-3.1-1.1-.42-1.06-1.02-1.34-1.02-1.34-.84-.58.06-.57.06-.57.92.06 1.4.95 1.4.95.82 1.4 2.15 1 2.67.76.08-.6.32-1 .58-1.23-2.04-.23-4.18-1.02-4.18-4.54 0-1 .36-1.82.95-2.46-.1-.24-.42-1.18.09-2.43 0 0 .78-.25 2.54.94a8.8 8.8 0 0 1 4.62 0c1.76-1.2 2.54-.94 2.54-.94.5 1.25.19 2.2.1 2.43.59.64.94 1.46.94 2.46 0 3.53-2.15 4.3-4.2 4.53.33.29.63.85.63 1.72v2.54c0 .25.16.53.64.44A9.2 9.2 0 0 0 12 2.8Z" fill="currentColor"/></svg>
+            GitHub
+          </a>
+          <a href="#">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.5 9.5V18M6.5 6.4v.1M10.5 18v-4.6c0-2.1 1.25-3.7 3.35-3.7 1.95 0 3.15 1.28 3.15 3.7V18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3.8 3.8h16.4v16.4H3.8V3.8Z" stroke="currentColor" stroke-width="1.5"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:fmarper@upv.edu.es">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5h16v11H4v-11Z" stroke="currentColor" stroke-width="1.6"/><path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="1.6"/></svg>
+            Email
+          </a>
+        </nav>
+      </section>
+    </main>
+  </div>
+  <script>
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const papers = Array.from(document.querySelectorAll('.paper'));
+    const displayToggle = document.querySelector('.display-toggle');
+    const previewLimit = 3;
+    let activeFilter = 'all';
+    let expanded = false;
+
+    function updatePapers() {
+      let visibleCount = 0;
+
+      papers.forEach((paper) => {
+        const tags = paper.dataset.tags.split(' ');
+        const matchesFilter = activeFilter === 'all' || tags.includes(activeFilter);
+
+        paper.classList.toggle('hidden', !matchesFilter);
+
+        if (!matchesFilter) {
+          paper.classList.remove('collapsed');
+          return;
+        }
+
+        visibleCount += 1;
+        paper.classList.toggle('collapsed', !expanded && visibleCount > previewLimit);
+      });
+
+      const hasMore = visibleCount > previewLimit;
+      displayToggle.hidden = !hasMore;
+      displayToggle.textContent = expanded ? 'Show fewer papers' : `Show all papers (${visibleCount})`;
+      displayToggle.setAttribute('aria-expanded', String(expanded));
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.filter;
+        expanded = false;
+
+        filterButtons.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+
+        updatePapers();
+      });
+    });
+
+    displayToggle.addEventListener('click', () => {
+      expanded = !expanded;
+      updatePapers();
+    });
+
+    updatePapers();
+  </script>
+</body>
+</html>
