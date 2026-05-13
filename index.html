@@ -7,17 +7,17 @@
   <title>Felix Marti-Perez</title>
   <style>
     :root {
-      --bg: #050505;
-      --surface: #111214;
-      --surface-soft: #0b0c0e;
-      --border: rgba(255, 255, 255, 0.11);
-      --text: #f5f7fb;
-      --muted: #a5abb5;
-      --subtle: #707781;
-      --blue: #8ab4f8;
-      --blue-strong: #4285f4;
+      --bg: #ffffff;
+      --surface: #f8fafd;
+      --surface-soft: #f1f3f4;
+      --border: rgba(60, 64, 67, 0.14);
+      --text: #202124;
+      --muted: #5f6368;
+      --subtle: #80868b;
+      --blue: #1a73e8;
+      --blue-strong: #1a73e8;
       --radius: 28px;
-      --max-width: 880px;
+      --max-width: 920px;
       --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
@@ -35,7 +35,7 @@
     body {
       min-height: 100vh;
       background:
-        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.035), transparent 28rem),
+        radial-gradient(circle at 50% 10%, rgba(26, 115, 232, 0.06), transparent 30rem),
         var(--bg);
       color: var(--text);
       font-family: var(--font);
@@ -56,20 +56,37 @@
     .hero {
       min-height: 100vh;
       display: grid;
-      place-items: center;
-      text-align: center;
+      align-items: center;
       padding: 96px 0;
     }
 
     .hero-inner {
-      transform: translateY(-5vh);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 220px;
+      gap: clamp(48px, 9vw, 112px);
+      align-items: center;
+      transform: translateY(-3vh);
+    }
+
+    .hero-copy {
+      max-width: 640px;
     }
 
     .name {
-      font-size: clamp(3.8rem, 9vw, 7.2rem);
+      font-size: clamp(4.2rem, 9vw, 7.6rem);
       font-weight: 420;
-      letter-spacing: -0.075em;
-      line-height: 0.94;
+      letter-spacing: -0.08em;
+      line-height: 0.92;
+      margin-bottom: 30px;
+    }
+
+    .hero-bio {
+      max-width: 560px;
+      color: #9aa0a6;
+      font-size: clamp(1.06rem, 1.8vw, 1.22rem);
+      font-weight: 350;
+      letter-spacing: -0.03em;
+      line-height: 1.55;
       margin-bottom: 24px;
     }
 
@@ -125,29 +142,13 @@
       margin-bottom: 24px;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 180px;
-      gap: 96px;
-      align-items: center;
-    }
-
-    .about-text {
-      max-width: 520px;
-      color: #d8dce3;
-      font-size: clamp(1.08rem, 2vw, 1.34rem);
-      font-weight: 350;
-      letter-spacing: -0.035em;
-      line-height: 1.55;
-    }
-
     .portrait {
-      width: 180px;
+      width: 220px;
       aspect-ratio: 1;
       border-radius: 999px;
       overflow: hidden;
       background:
-        radial-gradient(circle at 50% 34%, #33383f 0%, #15171a 62%, #0a0b0d 100%);
+        radial-gradient(circle at 50% 34%, #eef3fd 0%, #dfe8f8 62%, #f8fafd 100%);
       border: 1px solid var(--border);
       display: grid;
       place-items: center;
@@ -170,8 +171,8 @@
 
     .chip {
       border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.018);
-      color: #dce1e8;
+      background: rgba(26, 115, 232, 0.025);
+      color: #3c4043;
       border-radius: 999px;
       padding: 9px 17px;
       font-size: 0.88rem;
@@ -183,8 +184,8 @@
     .chip:hover,
     .chip.active {
       color: var(--text);
-      border-color: rgba(138, 180, 248, 0.44);
-      background: rgba(138, 180, 248, 0.08);
+      border-color: rgba(26, 115, 232, 0.32);
+      background: rgba(26, 115, 232, 0.07);
     }
 
     .papers-intro {
@@ -205,12 +206,12 @@
       grid-template-columns: 76px minmax(0, 1fr);
       gap: 28px;
       padding: 22px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.075);
+      border-top: 1px solid rgba(60, 64, 67, 0.12);
       transition: opacity 180ms ease, transform 180ms ease;
     }
 
     .paper:last-child {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(60, 64, 67, 0.12);
     }
 
     .paper.hidden,
@@ -249,12 +250,12 @@
     }
 
     .paper-tag {
-      color: #c4cad3;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #5f6368;
+      border: 1px solid rgba(60, 64, 67, 0.12);
       border-radius: 999px;
       padding: 4px 9px;
       font-size: 0.72rem;
-      background: rgba(255, 255, 255, 0.01);
+      background: rgba(60, 64, 67, 0.025);
     }
 
     .paper-link {
@@ -285,7 +286,7 @@
 
     .display-toggle:hover {
       color: var(--text);
-      border-color: rgba(138, 180, 248, 0.44);
+      border-color: rgba(26, 115, 232, 0.32);
       background: rgba(138, 180, 248, 0.06);
     }
 
@@ -302,7 +303,7 @@
       width: 120px;
       height: 100%;
       pointer-events: none;
-      background: linear-gradient(to right, rgba(5, 5, 5, 0), rgba(5, 5, 5, 0.92));
+      background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.94));
       backdrop-filter: blur(2px);
     }
 
@@ -313,7 +314,7 @@
       scroll-snap-type: x proximity;
       padding: 4px 96px 22px 0;
       scrollbar-width: thin;
-      scrollbar-color: rgba(138, 180, 248, 0.28) transparent;
+      scrollbar-color: rgba(26, 115, 232, 0.24) transparent;
     }
 
     .timeline::-webkit-scrollbar {
@@ -325,7 +326,7 @@
     }
 
     .timeline::-webkit-scrollbar-thumb {
-      background: rgba(138, 180, 248, 0.26);
+      background: rgba(26, 115, 232, 0.22);
       border-radius: 999px;
     }
 
@@ -343,7 +344,7 @@
       left: 0;
       width: 100%;
       height: 1px;
-      background: linear-gradient(to right, var(--blue), rgba(138, 180, 248, 0.12));
+      background: linear-gradient(to right, var(--blue), rgba(26, 115, 232, 0.16));
     }
 
     .timeline-year-group::after {
@@ -355,7 +356,7 @@
       height: 11px;
       border-radius: 999px;
       background: var(--blue);
-      box-shadow: 0 0 0 5px rgba(138, 180, 248, 0.08);
+      box-shadow: 0 0 0 5px rgba(26, 115, 232, 0.08);
     }
 
     .year {
@@ -380,11 +381,11 @@
 
     .timeline-entry.secondary {
       padding-left: 18px;
-      border-left: 1px solid rgba(255, 255, 255, 0.08);
+      border-left: 1px solid rgba(60, 64, 67, 0.12);
     }
 
     .timeline-title {
-      color: #d9dde4;
+      color: #3c4043;
       font-size: 0.94rem;
       font-weight: 360;
       letter-spacing: -0.02em;
@@ -419,7 +420,7 @@
       grid-template-columns: 128px minmax(0, 1fr);
       gap: 32px;
       padding: 24px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.075);
+      border-top: 1px solid rgba(60, 64, 67, 0.12);
     }
 
     .experience-item:last-child {
@@ -448,13 +449,13 @@
 
     .contact {
       padding: 38px 0 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(60, 64, 67, 0.12);
     }
 
     .contact-lines {
       display: grid;
       gap: 12px;
-      color: #d8dce3;
+      color: #3c4043;
       margin-bottom: 28px;
     }
 
@@ -463,7 +464,7 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      color: #d8dce3;
+      color: #3c4043;
       font-size: 0.96rem;
     }
 
@@ -498,18 +499,18 @@
         font-size: clamp(3.1rem, 15vw, 5rem);
       }
 
-      .about-grid,
+      .hero-inner,
       .paper,
       .experience-item {
         grid-template-columns: 1fr;
       }
 
-      .about-grid {
+      .hero-inner {
         gap: 36px;
       }
 
       .portrait {
-        width: 132px;
+        width: 148px;
       }
 
       .timeline-year-group {
@@ -532,28 +533,23 @@
   <div class="page">
     <header class="hero" aria-label="Introduction">
       <div class="hero-inner">
-        <h1 class="name">Felix Marti-Perez</h1>
-        <p class="role">AI researcher</p>
-        <p class="tagline">Evaluation, predictability, and explainability of AI systems</p>
-        <p class="meta">PhD student at VRAIN</p>
+        <div class="hero-copy">
+          <h1 class="name">Felix Marti-Perez</h1>
+          <p class="role">AI researcher · PhD student at VRAIN</p>
+          <p class="hero-bio">
+            PhD student at VRAIN, working on evaluation, predictability, and explainability of AI systems, with a focus
+            on autonomous driving perception.
+          </p>
+        </div>
+
+        <div class="portrait" aria-label="main image">
+          <img src="./image.jpg" alt="Felix Marti-Perez portrait"
+            style="width: 100%; height: 100%; object-fit: cover;" />
+        </div>
       </div>
     </header>
 
     <main>
-      <section class="section about" aria-labelledby="about-title">
-        <span id="about-title" class="section-label">About</span>
-        <div class="about-grid">
-          <p class="about-text">
-            PhD student at VRAIN, working on evaluation, predictability, and explainability of AI systems, with a focus
-            on autonomous driving perception.
-          </p>
-
-          <div class="portrait" aria-label="main image">
-            <img src="./image.jpg" alt="Felix Marti-Perez portrait"
-              style="width: 100%; height: 100%; object-fit: cover;" />
-          </div>
-        </div>
-      </section>
 
       <section id="papers" class="section" aria-labelledby="papers-title">
         <span id="papers-title" class="section-label">Publications</span>
@@ -744,9 +740,8 @@
               <span class="year">2025</span>
               <div class="timeline-entries">
                 <div class="timeline-entry secondary">
-                  <p class="timeline-title"><a class="text-link" href="https://xai.w.uib.no/mt4xai-workshop/">XAI for
-                      Machine Teaching Workshop · Mallorca</a></p>
-                  <p class="timeline-type">Workshop attended</p>
+                  <p class="timeline-title">XAI for Machine Teaching Workshop · Mallorca</p>
+                  <p class="timeline-type"><a href="https://xai.w.uib.no/mt4xai-workshop/">Workshop attended</a></p>
                 </div>
               </div>
             </div>
@@ -838,6 +833,10 @@
               <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" stroke-width="1.6" />
             </svg>
             Email
+          </a>
+          <a href="https://huggingface.co/femartip">
+            <span class="icon hf-icon" aria-hidden="true">🤗</span>
+            Hugging Face
           </a>
         </nav>
       </section>
